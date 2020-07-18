@@ -1,0 +1,25 @@
+{
+    "name": "techalica/acf-extended",
+    "description": "ACF Extended provides an object oriented API to register fields, groups and layouts with ACF.",
+    "type": "library",
+    "keywords": [
+        "acf",
+        "advanced",
+        "custom",
+        "fields",
+        "wordpress"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Imad Beyg",
+            "email": "imad.beyg@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "src/ACFExtended.php"
+        ]
+    },
+    "require": {}
+}
