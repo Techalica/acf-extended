@@ -1,5 +1,7 @@
 <?php
 
+namespace ACFExtended;
+
 class ACFExtended{
     public static function instance(){
         $acf_helpers = array('FieldItem', 'Location', 'FieldHelper', 'Hide', 'Metabox');

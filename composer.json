@@ -9,17 +9,25 @@
         "fields",
         "wordpress"
     ],
+    "homepage": "https://github.com/techalica/acf-extended",
     "license": "MIT",
     "authors": [
         {
             "name": "Imad Beyg",
-            "email": "imad.beyg@gmail.com"
+            "email": "imad.beyg@gmail.com",
+            "role": "developer"
         }
     ],
+    "require": {
+        "php": ">=5.5"
+    },
     "autoload": {
+        "psr-4": {
+            "ACFExtended\\": "src"
+        },
         "files": [
             "src/ACFExtended.php"
         ]
-    },
-    "require": {}
+    }
+
 }
