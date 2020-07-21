@@ -1,9 +1,9 @@
 # ACF Extended
 
 
- Register [advanced custom fields](https://www.advancedcustomfields.com) with object oriented PHP.
+Register [advanced custom fields](https://www.advancedcustomfields.com) with object oriented PHP.
 
-ACF Extended provides an object oriented API to register fields, groups and layouts with ACF. If you register fields in your theme, you can safely rely on version control when working with other developers. Oh, and you don't have to worry about unique field keys.
+ACF Extended provides an object oriented API to register fields, groups and layouts with ACF.  Oh, and you don't have to worry about unique field keys.
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -16,11 +16,14 @@ Require this package, with [Composer](https://getcomposer.org), in the root dire
 ```bash
 $ composer require techalica/acf-extended
 ```
+Download the [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro) plugin and put it in either the `plugins` or `mu-plugins` directory. Visit the WordPress dashboard and activate the plugin. Please note that this package supports ACF version 5.6 or later.
 
 ## Usage
 
-Download the [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro) plugin and put it in either the `plugins` or `mu-plugins` directory. Visit the WordPress dashboard and activate the plugin. Please note that this package supports ACF version 5.6 or later.
-
+All the fields can be generated through calling their respective 'type' name function with a label as an argument.
+ ```bash
+fields()->text('Name')
+ ```
 ## Resources
 
 Below you'll find a list of articles which can help you getting started and advance your custom fields knowledge.

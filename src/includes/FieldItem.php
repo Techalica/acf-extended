@@ -60,6 +60,8 @@ class FieldItem
     public $layouts = "";
     public $button_label = "Add Row";
 
+    private $conditional_logic_key = -1;
+
     public function __construct(array $settings = NULL)
     {
         if (!empty($settings)) {
@@ -118,9 +120,9 @@ class FieldItem
         return $this;
     }
 
-    public function conditional_logic($conditional_logic = array())
+    public function conditional_logic()
     {
-        $this->conditional_logic = $conditional_logic;
+        $this->conditional_logic_key++;
 
         return $this;
     }
@@ -471,14 +473,14 @@ class FieldItem
         return $this;
     }
 
-    public function condition($field, $value, $operator = '==', $key = 0)
+    public function condition($field, $value, $operator = '==')
     {
         if(!is_array($this->conditional_logic))
         {
             $this->conditional_logic = array();
         }
 
-        $this->conditional_logic[$key][] = compact('field', 'value', 'operator');
+        $this->conditional_logic[$this->conditional_logic_key][] = compact('field', 'value', 'operator');
 
         return $this;
     }

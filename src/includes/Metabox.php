@@ -160,6 +160,7 @@ class Metabox
         $key      = $this->key;
         $title    = $this->title;
         $fields   = $this->convert_to_acf_fields($this->fields);
+
         $location = array_values(array_map(function($location)
         {        
             if(is_array($location))
@@ -187,7 +188,6 @@ class Metabox
     
     public function register()
     {
-//        pretty_print($this->get_acf_metabox());
         register_field_group($this->get_acf_metabox());
     }
 
@@ -204,7 +204,7 @@ class Metabox
 
         $names = array();
         foreach ($fields as $key => $field)
-        {            
+        {
             $field->key  = "field_" . $parent_key . "_" .  $key;
             $field->name = $key;
 
@@ -213,8 +213,14 @@ class Metabox
                 $field->sub_fields = $this->convert_to_acf_fields($field->sub_fields, $field);
             }
 
+            if(!empty($field->conditional_logic) && is_array($field->conditional_logic))
+            {
+                $field->conditional_logic = $this->conditional_logic_conversion($field->conditional_logic);
+            }
+
             $names[] = $field->key;
         }
+
 
         $fields = array_map(function($field) {
             return ((array) $field);
@@ -223,5 +229,25 @@ class Metabox
         $fields = array_values($fields);
 
         return $fields;
+    }
+
+    protected function conditional_logic_conversion($conditional_array)
+    {
+        $conditional_logic = array();
+
+        foreach($conditional_array as $conditional_blocks)
+        {
+            $condition = array();
+
+            foreach ($conditional_blocks as $conditional_block)
+            {
+                $conditional_block['field'] = $conditional_block['field']->key;
+                $condition[] = $conditional_block;
+            }
+
+            array_push($conditional_logic, $condition);
+        }
+
+        return $conditional_logic;
     }
 }
